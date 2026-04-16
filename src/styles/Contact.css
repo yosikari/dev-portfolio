@@ -1,0 +1,54 @@
+.contact { padding: var(--sp-3xl) 0; }
+
+.contact__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--sp-2xl);
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2xl);
+  backdrop-filter: blur(10px);
+}
+
+.contact__info p {
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-md);
+  line-height: 1.8;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  background: var(--clr-bg-primary);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-md);
+  color: var(--clr-text-primary);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  transition: all var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px var(--clr-accent-glow);
+}
+
+.submit-btn { width: 100%; padding: 1rem; font-size: var(--fs-md); font-weight: bold; }
+.submit-btn.success { background-color: #059669; border-color: #059669; }
+
+.status-msg { margin-top: var(--sp-md); text-align: center; font-weight: 500; font-size: var(--fs-sm); }
+.success-msg { color: #10b981; }
+.error-msg { color: #ef4444; }
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  .contact__wrapper { grid-template-columns: 1fr; padding: var(--sp-xl); }
+}

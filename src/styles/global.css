@@ -1,0 +1,135 @@
+@import "./variables.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--clr-bg-primary);
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(var(--clr-accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-accent) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-blend-mode: overlay;
+  
+  color: var(--clr-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+}
+
+/* Buttons */
+.btn-primary,
+.btn-outline {
+  padding: var(--sp-sm) var(--sp-lg);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: all var(--transition);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--clr-accent);
+  color: var(--clr-bg-primary);
+  border: 1px solid var(--clr-accent);
+}
+.btn-primary:hover {
+  background: #3ac06d; 
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid var(--clr-text-secondary);
+  color: var(--clr-text-primary);
+}
+.btn-outline:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  :root {
+    --fs-4xl: 2.5rem; 
+    --fs-3xl: 2rem;
+    --fs-xl: 1.25rem;
+
+    --sp-xl: 1rem;
+    --sp-3xl: 3rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero__badges {
+    justify-content: center;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr; 
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: var(--sp-md);
+    text-align: center;
+  }
+
+  .container {
+    padding: 0 1.5rem !important; 
+  }
+}
+
+
+html {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
