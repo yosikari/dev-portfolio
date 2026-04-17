@@ -27,8 +27,6 @@ function Skills() {
   const scrollRef = useRef(null)
   const [isPaused, setIsPaused] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
 
   // לוגיקה של אנימציה אוטומטית
   useEffect(() => {
@@ -50,25 +48,29 @@ function Skills() {
     return () => cancelAnimationFrame(animationFrameId)
   }, [isPaused, isDragging])
 
-  // פונקציות גרירה (Mouse Drag)
+  const dragRef = useRef({ isDragging: false, startX: 0, scrollLeft: 0 })
+
   const handleMouseDown = (e) => {
+    dragRef.current = {
+      isDragging: true,
+      startX: e.clientX,
+      scrollLeft: scrollRef.current.scrollLeft,
+    }
     setIsDragging(true)
-    setStartX(e.pageX - scrollRef.current.offsetLeft)
-    setScrollLeft(scrollRef.current.scrollLeft)
+    setIsPaused(true)
   }
 
   const handleMouseLeaveOrUp = () => {
+    dragRef.current.isDragging = false
     setIsDragging(false)
     setIsPaused(false)
   }
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return
+    if (!dragRef.current.isDragging) return
     e.preventDefault()
-    setIsPaused(true) // מוודא שהאנימציה לא נלחמת בגרירה
-    const x = e.pageX - scrollRef.current.offsetLeft
-    const walk = (x - startX) * 2 // מהירות הגרירה
-    scrollRef.current.scrollLeft = scrollLeft - walk
+    const delta = e.clientX - dragRef.current.startX
+    scrollRef.current.scrollLeft = dragRef.current.scrollLeft - delta
   }
 
   return (
@@ -92,19 +94,10 @@ function Skills() {
       >
         <div className="carousel-track">
           {[...techStack, ...techStack].map((tech, index) => (
-            <a 
-              key={index} 
-              href={tech.link} 
-              target="_blank" 
-              rel="noreferrer" 
-              className="skill-card-link"
-              onClick={(e) => isDragging && e.preventDefault()} // מונע פתיחת לינק בזמן גרירה
-            >
-              <div className="skill-card">
-                <div className="skill-icon">{tech.icon}</div>
-                <span className="skill-name">{tech.name}</span>
-              </div>
-            </a>
+            <div key={index} className="skill-card">
+              <div className="skill-icon">{tech.icon}</div>
+              <span className="skill-name">{tech.name}</span>
+            </div>
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import "../styles/About.css";
-import aboutImg from "../assets/images/about-me.png";
+import DevIllustration from "./DevIllustration";
 function About() {
   return (
     <section className="about container" id="about">
@@ -12,9 +12,7 @@ function About() {
         transition={{ duration: 0.6 }}
       >
         <div className="about__image">
-          <div className="image-placeholder">
-            <img src={aboutImg} alt="Yossi working at his MERN station" />
-          </div>
+          <DevIllustration />
         </div>
 
         <div className="about__content">

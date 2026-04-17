@@ -7,9 +7,9 @@ import Contact from '../cmps/Contact'
 function HomePage() {
   return (
     <div className="page-content">
-      <Skills />
       <About />
       <Education />
+      <Skills />
       <Projects />
       <Contact />
     </div>
